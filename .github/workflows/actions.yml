@@ -1,6 +1,9 @@
 name: Shell Commands
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    types: [opened, closed]
 
 jobs:
   run-github-actions:
@@ -20,7 +23,7 @@ jobs:
         id: greet
         uses: actions/hello-world-javascript-action@v1
         with:
-          who-to-greet: John
+          who-to-greet: Rory
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
 
