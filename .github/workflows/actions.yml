@@ -1,6 +1,9 @@
 name: Shell Commands
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    types: [opened, closed]
 
 jobs:
   run-github-actions:
