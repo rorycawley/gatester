@@ -1,0 +1,40 @@
+name: Shell Commands
+
+on: [push, pull_request]
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tools repo
+        uses: actions/checkout@v3
+      - name: list files
+        run: |
+          pwd
+          ls
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo ${{ github.token }}
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: John
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time }}"
+
+  # run-shell-command:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: echo a strong
+  #       run: echo "hello world now"
+  #     - name: multiline script
+  #       run: |
+  #         node -v
+  #         npm -v
+  #     - name: Python Commands
+  #       run: |
+  #         import platform
+  #         (platform.processor())
+  #       shell: python
