@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo a strong
-        run: echo "hello world"
+        run: echo "hello world now"
       - name: multiline script
         run: |
           node -v
